@@ -1,0 +1,41 @@
+server:
+  port: 8086
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/comment
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+#CREATE DATABASE Comments;
+#
+#USE comments;
+#
+#CREATE TABLE IF NOT EXISTS Comment (
+#    comment_id INT AUTO_INCREMENT PRIMARY KEY,
+#    user_id INT,
+#    commenter_id INT,
+#    post_id INT,
+#    comment_content TEXT
+#);
+
+
+

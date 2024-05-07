@@ -1,0 +1,4 @@
+(() => {
+	// insertListElements();
+	addEventListeners();
+})();

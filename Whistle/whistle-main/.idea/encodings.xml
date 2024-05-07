@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/whistle-main/springboot-3-microservices/api-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/whistle-main/springboot-3-microservices/bookmark-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/whistle-main/springboot-3-microservices/chat-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/whistle-main/springboot-3-microservices/comment-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/whistle-main/springboot-3-microservices/config-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/whistle-main/springboot-3-microservices/department-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/whistle-main/springboot-3-microservices/employee-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/whistle-main/springboot-3-microservices/friends-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/whistle-main/springboot-3-microservices/like-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/whistle-main/springboot-3-microservices/media-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/whistle-main/springboot-3-microservices/notification-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/whistle-main/springboot-3-microservices/post-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/whistle-main/springboot-3-microservices/search-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/whistle-main/springboot-3-microservices/service-registry/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/whistle-main/springboot-3-microservices/user-management-service/src/main/java" charset="UTF-8" />
+  </component>
+</project>

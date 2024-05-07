@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/whistle-main/springboot-3-microservices/like-service/like-service.iml" filepath="$PROJECT_DIR$/whistle-main/springboot-3-microservices/like-service/like-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/whistle-main.iml" filepath="$PROJECT_DIR$/.idea/whistle-main.iml" />
+    </modules>
+  </component>
+</project>

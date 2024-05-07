@@ -1,0 +1,38 @@
+server:
+  port: 8093
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/friends
+    username: root
+    password: 1234
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+
+
+#  CREATE SCHEMA IF NOT EXISTS friends;
+#
+#  CREATE TABLE IF NOT EXISTS Friend (
+#  sender_id INT,
+#  receiver_id INT,
+#  request_status VARCHAR(20),
+#  PRIMARY KEY (sender_id, receiver_id)
+#  );
+
+

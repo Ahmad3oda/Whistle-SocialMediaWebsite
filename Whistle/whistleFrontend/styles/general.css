@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+:root {
+	--btn-primary-color-hue: 252;
+	--primary-color-hue: 252;
+	--color-card: 100%;
+	--color-bg: 95%;
+	--color-font: 17%;
+
+	--color-white: hsl(var(--primary-color-hue), 30%, var(--color-card));
+	--color-light: hsl(var(--primary-color-hue), 30%, var(--color-bg));
+	--color-gray: hsl(252, 15%, 65%);
+	--color-primary: hsl(var(--btn-primary-color-hue), 56%, 53%);
+	--color-secondary: hsl(var(--primary-color-hue), 75%, 80%);
+	--color-success: hsl(120, 95%, 65%);
+	--color-danger: hsl(0, 95%, 65%);
+	--color-dark: hsl(var(--primary-color-hue), 30%, var(--color-font));
+	--color-black: hsl(252, 30%, 10%);
+
+	--border-radius: 2rem;
+	--card-border-radius: 1rem;
+	--btn-padding: 0.6rem 2rem;
+	--search-padding: 0.6rem 1rem;
+	--card-padding: 1rem;
+
+	--sticky-top-left: 5rem;
+	--sticky-top-right: -20rem;
+}
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	outline: none;
+	border: none;
+	list-style: none;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 15px;
+}
+
+body {
+	font-family: "Poppins", sans-serif;
+	color: var(--color-dark);
+	background-color: var(--color-light);
+}
+
+input::-webkit-search-cancel-button {
+	display: none;
+}
+
+/* --------------------GENERAL STYLES-------------------- */
+.container {
+	width: 80%;
+	margin: 0 auto;
+	transition: all 300ms ease;
+}
+
+
+
+main .container .left .profile:hover{
+	background: var(--color-gray);
+	cursor: pointer;
+}
+
+.profile-photo {
+	width: 2.7rem;
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+img {
+	display: block;
+	width: 100%;
+}
+
+.btn {
+	display: inline-block;
+	padding: var(--btn-padding);
+	font-size: 0.9rem;
+	font-weight: 500;
+	border-radius: var(--border-radius);
+	cursor: pointer;
+	transition: all 300ms ease;
+}
+
+.btn:hover {
+	opacity: 0.8;
+}
+
+.btn-primary {
+	background: var(--color-primary);
+	color: white;
+}
+
+.text-bold {
+	font-weight: 500;
+}
+
+.text-muted {
+	color: var(--color-gray);
+}
+
+/* --------------------MAIN-------------------- */
+main {
+	position: relative;
+	top: 5.4rem;
+}
+
+main .container {
+	display: grid;
+	grid-template-columns: 18vw auto 20vw;
+	column-gap: 2rem;
+	padding-bottom: 2rem;
+	position: relative;
+}

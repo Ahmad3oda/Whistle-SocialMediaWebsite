@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/api-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/chat-service/pom.xml" />
+        <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/like-service/pom.xml" />
+        <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/post-service/pom.xml" />
+        <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/media-service/pom.xml" />
+        <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/search-service/pom.xml" />
+        <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/comment-service/pom.xml" />
+        <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/friends-service/pom.xml" />
+        <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/employee-service/pom.xml" />
+        <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/service-registry/pom.xml" />
+        <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/department-service/pom.xml" />
+        <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/notification-service/pom.xml" />
+        <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/user-management-service/pom.xml" />
+        <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/bookmark-service/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

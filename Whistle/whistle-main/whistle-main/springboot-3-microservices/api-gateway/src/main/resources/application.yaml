@@ -1,0 +1,80 @@
+server:
+  port: 8060
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+spring:
+  application:
+    name: api-gateway
+  config:
+    import: "optional:configserver:http://localhost:8088"
+  cloud:
+    gateway:
+      routes:
+        - id: employee-service
+          uri: lb://employee-service
+          predicates:
+            - Path=/employee/**
+        - id: department-service
+          uri: lb://department-service
+          predicates:
+            - Path=/department/**
+        - id: chat-service
+          uri: lb://chat-service
+          predicates:
+            - Path=/chat/**
+        - id: comment-service
+          uri: lb://comment-service
+          predicates:
+            - Path=/comment/**
+
+        - id: friends-service
+          uri: lb://friends-service
+          predicates:
+            - Path=/friends/**
+
+        - id: like-service
+          uri: lb://like-service
+          predicates:
+            - Path=/like/**
+
+        - id: media-service
+          uri: lb://media-service
+          predicates:
+            - Path=/media/**
+
+
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=/notification/**
+
+        - id: post-service
+          uri: lb://post-service
+          predicates:
+            - Path=/post/**
+
+
+        - id: search-service
+          uri: lb://search-service
+          predicates:
+            - Path=/search/**
+
+
+        - id: user-management-service
+          uri: lb://user-management-service
+          predicates:
+            - Path=/user-management/**
+
+        - id: bookmark-service
+          uri: lb://bookmark-service
+          predicates:
+            - Path=/bookmark/**
