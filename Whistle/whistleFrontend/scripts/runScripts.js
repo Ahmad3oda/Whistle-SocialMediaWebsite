@@ -1,4 +1,3 @@
 (() => {
-	// insertListElements();
 	addEventListeners();
 })();

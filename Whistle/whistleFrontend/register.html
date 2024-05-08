@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/login.css">
+
+    <title>Sign up</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="logo">
+            <img src="images/logo.png" alt="logo">
+        </div>
+        <div class="text-center mt-4 name">
+            Whistle
+        </div>
+        <form class="p-3 mt-3">
+            <div class="form-field d-flex align-items-center">
+                <span class="far fa-email"></span>
+                <input type="email" name="email" id="username" placeholder="Email">
+            </div>
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-key"></span>
+                <input type="password" name="password" id="password" placeholder="Password">
+            </div>
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-key"></span>
+                <input type="text" name="firstName" id="firstName" placeholder="firstName">
+            </div>
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-key"></span>
+                <input type="text" name="lastName" id="lastName" placeholder="lastName">
+            </div>
+            <button class="btn mt-3" id="registerButton">Register</button>
+        </form>
+
+        <div class="text-center fs-6 ">
+            <sapn href="#">You have an account?</sapn> <a href="login.html">Login</a>
+            <p class="warning"></p>
+        </div>
+    </div>
+    <script src="scripts/parser.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="scripts/registerHandling.js"></script>
+</body>
+</html>

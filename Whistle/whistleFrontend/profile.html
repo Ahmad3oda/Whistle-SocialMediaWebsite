@@ -21,14 +21,10 @@
 	<nav>
 		<div class="container">
 			<h2 class="logo">Whistle</h2>
-			<div class="search-bar feeds-search" id="nav-search">
-				<i class="uil uil-search"></i>
-				<input type="search" name="search" id="navbar-search" placeholder="Search">
-			</div>
-			<div class="create">
-				<label class="btn btn-primary" for="create-post">Create</label>
-
-			</div>
+			
+			<button class="logout" style="width: fit-content; color:white; background-color:rgb(215, 78, 78); cursor: pointer; padding: 5px 10px;border-radius: 5px;">
+					Logout
+			</button>
 		</div>
 	</nav>
 
@@ -39,10 +35,10 @@
 			<div class="left">
 				<div class="profile">
 					<div class="profile-photo">
-						<img src="images/profile-1.jpg">
+						<img src="images/image.jpeg">
 					</div>
 					<div class="handle">
-						<h4>Diana Ayi</h4>
+						<h4 id="email"></h4>
 
 					</div>
 
@@ -57,14 +53,14 @@
 							<i class="uil uil-arrow-right"></i>
 						</div>
 					</div>
-					<a class="menu-item active" id="home">
+					<a class="menu-item" id="home">
 						<span><i class="uil uil-home"></i></span><h3>Home</h3>
 					</a>
 
 					<a class="menu-item" id="notification-menu-item">
 						<span>
 							<i class="uil uil-bell">
-								<small class="notification-count">9+</small>
+
 							</i>
 						</span>
 						<h3>Notifications</h3>
@@ -79,6 +75,9 @@
 					</a>
 					<a class="menu-item" id="theme-menu-item">
 						<span><i class="uil uil-palette"></i></span><h3>Theme</h3>
+					</a>
+					<a class="menu-item" id="explore">
+						<span><i class="uil uil-compass"></i></span><h3>Expolre</h3>
 					</a>
 					<a class="menu-item">
 						<span><i class="uil uil-setting"></i></span><h3>Settings</h3>
@@ -176,14 +175,18 @@
 	</div>
 
 	<!-- SCRIPTS -->
+	<script src="scripts/parser.js"></script>
+    <script  src="scripts/handlingPost.js"></script>   
 	<script  src="scripts/notifications.js"></script>
 	<script  src="scripts/utils.js"></script>
 	<script  src="scripts/templates.js"></script>
 	<script  src="scripts/insert.js"></script>
 	<!-- <script  src="scripts/events.js"></script> -->
 	<!-- <script  src="scripts/runScripts.js"></script> -->
+
 	<script  src="scripts/friendRequests.js"></script>
     <script src="scripts/profile.js"></script>
+	<script src="scripts/logoutHandling.js"></script>
     <script src="scripts/navigationHandling.js"></script>
 </body>
 </html>

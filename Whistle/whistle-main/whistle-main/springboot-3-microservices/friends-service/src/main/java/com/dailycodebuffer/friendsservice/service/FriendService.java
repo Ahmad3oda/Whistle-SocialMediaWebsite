@@ -2,6 +2,7 @@ package com.dailycodebuffer.friendsservice.service;
 
 import com.dailycodebuffer.friendsservice.entity.Friend;
 import com.dailycodebuffer.friendsservice.entity.FriendId;
+import com.dailycodebuffer.friendsservice.entity.FriendRequestDetails;
 import com.dailycodebuffer.friendsservice.repository.FriendRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -21,8 +22,15 @@ public class FriendService {
     private final FriendRepository friendRepository;
 
     private static final String NOTIFICATION_ADD_URL = "http://localhost:8060/notification/add/{content}/{senderId}/{receiverId}";
-    private static final String USER_ADD_URL = "http://localhost:8060/user-management/searchById/{id}";
+    private static final String USER_ADD_URL         = "http://localhost:8060/user-management/searchById/{id}";
+    private static final String USER_RESPONSE_URL    = "http://localhost:8060/user-management/searchById/{id}";
 
+
+
+    String getUsername(Integer ownerId) {
+        ResponseEntity<String> response = new RestTemplate().getForEntity(USER_RESPONSE_URL, String.class, ownerId);
+        return response.getBody();
+    }
 
     void addNotificationToFriendRequest(Friend friendRequest) {
         long senderId = friendRequest.getSenderId();
@@ -30,8 +38,6 @@ public class FriendService {
 
         ResponseEntity<String> response = new RestTemplate().getForEntity(USER_ADD_URL, String.class, senderId);
         String content = response.getBody() + " send you a friend request !";
-        System.out.println(response);
-        System.out.println(content);
 
         // Building the URL with correct placeholders
         String notificationAddUrl = UriComponentsBuilder.fromHttpUrl(NOTIFICATION_ADD_URL)
@@ -114,18 +120,38 @@ public class FriendService {
         return receiverIds;
     }
 
+    public  List <Integer> idsListAsReceiver (Integer userId, String status){
+        List <Friend> userAsReceiver = friendRepository.findSenderIdByReceiverIdAndRequestStatus(userId, status);
+
+        List<Integer> receiverIds = userAsReceiver.stream()
+                .map(Friend::getReceiverId)
+                .collect(Collectors.toList());
+
+        return receiverIds;
+    }
+
+
     // get friend list by id.
     public List <Integer> getFriends(Integer userId){
         return idsList(userId, "accepted");
     }
 
     // get requests list by id.
-    public List <Integer> getRequests(Integer userId){
-        return idsList(userId, "pending");
+    public List <FriendRequestDetails> getRequests(Integer userId){
+        List<Integer> res = idsListAsReceiver(userId, "pending");
+        List< FriendRequestDetails > friendRequestsDetails = new ArrayList<>();
+        for (Integer id : res) {
+            FriendRequestDetails requestDetails = new FriendRequestDetails();
+            ResponseEntity<String> response = new RestTemplate().getForEntity(USER_ADD_URL, String.class, id);
+            requestDetails.setId( id );
+            requestDetails.setName( response.getBody() );
+            friendRequestsDetails.add(requestDetails);
+        }
+        return friendRequestsDetails;
     }
 
     // get suggestions list.
-    public List <Integer> getSuggestions(List <Integer> friendList, Integer userId){
+    public List <FriendRequestDetails> getSuggestions(List <Integer> friendList, Integer userId){
         Set<Integer> suggestionsSet = new HashSet<>();
 
         for (Integer friend : friendList) {
@@ -133,7 +159,16 @@ public class FriendService {
             List <Integer> ids = new ArrayList<>();
 
             for (Integer friendId : friends) {
-                if(!Objects.equals(friendId, userId) && !friendList.contains(friendId)) {
+                Friend friendship = friendRepository.findRequestStatusBySenderIdAndReceiverId(userId, friendId);
+                if(friendship == null){
+                    friendship = friendRepository.findRequestStatusBySenderIdAndReceiverId(friendId, userId);
+                }
+                String status = null;
+                if(friendship != null){
+                    status = friendship.getRequestStatus();
+                }
+
+                if(!Objects.equals(friendId, userId) && !friendList.contains(friendId) && Objects.equals(status, null)) {
                     ids.add(friendId);
                 }
             }
@@ -144,7 +179,16 @@ public class FriendService {
         List<Integer> suggestionsList = new ArrayList<>(suggestionsSet);
         Collections.shuffle(suggestionsList);
 
-        return suggestionsList.subList(0, Math.min(5, suggestionsList.size()));
+        suggestionsList = suggestionsList.subList(0, Math.min(5, suggestionsList.size()));
+        List< FriendRequestDetails > friendRequestsDetails = new ArrayList<>();
+        for (Integer id : suggestionsList) {
+            FriendRequestDetails curr = new FriendRequestDetails();
+            curr.setId(id);
+            curr.setName(getUsername(id));
+            friendRequestsDetails.add( curr );
+        }
+
+        return friendRequestsDetails;
     }
 
     // check for friendship.

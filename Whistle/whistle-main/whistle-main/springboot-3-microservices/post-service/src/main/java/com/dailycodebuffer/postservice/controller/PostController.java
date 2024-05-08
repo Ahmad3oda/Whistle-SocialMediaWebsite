@@ -29,6 +29,7 @@ public class PostController {
         post.setOwnerId(ownerId);
         post.setContent(content);
         post.setImagePath(imagePath);
+        post.setCommentsNumber(0);
 //        post.setUsername(postService.getById(ownerId).getUsername());
         if(postService.checkPostValidity(post)){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -59,8 +60,8 @@ public class PostController {
 
     // get posts of a single user by id.
     @GetMapping("/self/{userId}")
-    public ResponseEntity<List<Post>> getSelfPosts(@PathVariable Integer userId) {
-        List<Post> posts = postService.getPostsByOwnerId(userId);
+    public ResponseEntity<List<CompletePost>> getSelfPosts(@PathVariable Integer userId) {
+        List<CompletePost> posts = postService.getPostsByOwnerIdRetCompletePost(userId);
         return ResponseEntity.ok(posts);
     }
 
@@ -73,9 +74,9 @@ public class PostController {
 
     // get bookmarks.
     @GetMapping("/bookmarks/{userId}")
-    public ResponseEntity<List<Post>> getBookmarksPosts(@PathVariable Integer userId) {
+    public ResponseEntity<List<CompletePost>> getBookmarksPosts(@PathVariable Integer userId) {
         List <Integer> postsIds = postService.getBookmarkIds(userId);
-        return ResponseEntity.ok(postService.getBookmarks(postsIds));
+        return ResponseEntity.ok(postService.getBookmarks(postsIds , userId));
     }
 
     @GetMapping("/getOwnerId/{postId}")

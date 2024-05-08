@@ -111,6 +111,7 @@ public class PostService {
     public Post getById(Integer postId) {
         Post post = postRepository.findById(postId).orElse(null);
         assert post != null;
+        System.out.println(countComments(postId)+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         post.setCommentsNumber(countComments(postId));
         post.setLikesNumber(countLikes(postId));
         post.setUsername(getUsername(post.getOwnerId()));
@@ -127,8 +128,37 @@ public class PostService {
         }
         return posts;
     }
+    public List<CompletePost> getPostsByOwnerIdRetCompletePost(Integer ownerId) {
+        List<Post> posts = postRepository.findByOwnerId(ownerId);
+        for (Post post : posts) {
+            Post updated = getById(post.getPostId());
+            post.setCommentsNumber(updated.getCommentsNumber());
+            post.setLikesNumber(updated.getLikesNumber());
+            post.setUsername(getUsername(post.getOwnerId()));
+        }
+        posts.sort(Comparator.comparing(Post::getPostDate).reversed());
+
+        List<CompletePost> postsAndIsLiked = new ArrayList<>();
+        for (Post post : posts) {
+            CompletePost curr = new CompletePost();
+            curr.setPostId( post.getPostId() );
+            curr.setPostDate( post.getPostDate() );
+            curr.setContent( post.getContent() );
+            curr.setOwnerId(post.getOwnerId());
+            curr.setImagePath(post.getImagePath());
+            curr.setUsername(post.getUsername());
+            curr.setCommentsNumber(post.getCommentsNumber());
+            curr.setLikesNumber(post.getLikesNumber());
+            curr.setLiked( isLiked( curr.getPostId() , ownerId ) );
+            curr.setBookMarked( isBookMarked( curr.getPostId() , ownerId ) );
+            postsAndIsLiked.add(curr);
+        }
+        return postsAndIsLiked;
+    }
+
 
     Integer countComments(Integer postId) {
+        System.out.println(postId);
         ResponseEntity<Integer> response = new RestTemplate().getForEntity(COMMENT_COUNT_URL, Integer.class, postId);
         return response.getBody();
     }
@@ -195,14 +225,30 @@ public class PostService {
         );
         return response.getBody();
     }
-    public List<Post> getBookmarks(List<Integer> postsIds) {
+    public List<CompletePost> getBookmarks(List<Integer> postsIds,int userId) {
 
         List<Post> posts = new ArrayList<>();
         for (Integer postId : postsIds) {
             posts.add(getById(postId));
         }
         posts.sort(Comparator.comparing(Post::getPostDate).reversed());
-        return posts;
+
+        List<CompletePost> postsAndIsLiked = new ArrayList<>();
+        for (Post post : posts) {
+            CompletePost curr = new CompletePost();
+            curr.setPostId( post.getPostId() );
+            curr.setPostDate( post.getPostDate() );
+            curr.setContent( post.getContent() );
+            curr.setOwnerId(post.getOwnerId());
+            curr.setImagePath(post.getImagePath());
+            curr.setUsername(post.getUsername());
+            curr.setCommentsNumber(post.getCommentsNumber());
+            curr.setLikesNumber(post.getLikesNumber());
+            curr.setLiked( isLiked( curr.getPostId() , userId ) );
+            curr.setBookMarked( isBookMarked( curr.getPostId() , userId ) );
+            postsAndIsLiked.add(curr);
+        }
+        return postsAndIsLiked;
     }
 
     public Integer getOwnerIdByPostId(Integer postId) {

@@ -1,12 +1,11 @@
-fetch("http://localhost:8060/friends/requests/1")
+fetch(`http://localhost:8060/friends/requests/${parseJwt().id}`)
     .then(response => response.json())
     .then((data) => {
-        data.reverse().forEach(element => {
+        data.forEach(element => {
             const template = getRequestTemplate(element);
             const elementHTML = document.querySelector(".requests");
             elementHTML.innerHTML += template;
         });
-
 
         const requestOptions = {
                 method: "GET",
@@ -19,18 +18,15 @@ fetch("http://localhost:8060/friends/requests/1")
         // Add event listener to each accept button
         acceptRequestButtons.forEach(button => {
             button.addEventListener("click", function() {
-                fetch(`http://localhost:8060/friends/request/${button.id}/1`, requestOptions)
-                    .then(response => response.json())
-                    .then(window.location.reload());
+                fetch(`http://localhost:8060/friends/request/${button.getAttribute('acceptBtn')}/${parseJwt().id}`, requestOptions)
+                    .then(window.location.reload())
             });
         });
 
-
 		declineRequestButtons.forEach(button => {
             button.addEventListener("click", function() {
-                fetch(`http://localhost:8060/friends/request/delete/${button.id}/1`, requestOptions)
-                    .then(response => response.json())
-                    .then(window.location.reload());
+                fetch(`http://localhost:8060/friends/request/delete/${button.getAttribute('declineBtn')}/${parseJwt().id}`, requestOptions)
+                    .then(window.location.reload())
             });
         });
     });

@@ -44,31 +44,6 @@ const addEventListeners = () => {
 		});
 	});
 
-	// // ---------------------------Messages---------------------------
-	// const msgNotif = get("#messages-notifications");
-	// msgNotif.addEventListener("click", () => {
-	// 	get(".middle").className = "middle";
-	// 	get(".right").className = "right active";
-	// 	msgNotif.querySelector(".notification-count").style.display = "none";
-	// 	if (window.innerWidth > 992) {
-	// 		get(".messages").style.boxShadow = "0 0 1rem var(--color-primary)";
-	// 		setTimeout(() => {
-	// 			get(".messages").style.boxShadow = "none";
-	// 		}, 2000);
-	// 	}
-	// });
-
-	// // search for messages
-	// get("#messages").addEventListener("keyup", (evt) => {
-	// 	getAll(".message").forEach((msg) => {
-	// 		const user = msg.querySelector("h5").innerText.toLowerCase();
-	// 		if (user.includes(evt.target.value.toLowerCase())) {
-	// 			msg.style.display = "flex";
-	// 		} else {
-	// 			msg.style.display = "none";
-	// 		}
-	// 	});
-	// });
 
 	// --------------------Toggle Sidebar on Mobile Screen--------------------
 	const menuToggler = get(".menu-toggle");
@@ -155,73 +130,6 @@ const addEventListeners = () => {
 		});
 	});
 
-	// ----------------------Handle Like Event-----------------------
-	// const addLikeEvyListener = () => {
-	// 	console.log("ddddddd")
-	// 	const numbers = getAll(".number-of-likes");
-	// 	let s= getAll(".like")
-	// 	console.log(s)
-	// 	getAll(".like").forEach((heart, idx) => {
-	// 		console.log("aaaaaaaaaa")
-	// 		heart.addEventListener("click", () => {
-	// 			const noAction = '<i class="uil uil-heart"></i>';
-	// 			const liked = '<img src="./images/heart.png"/>';
-	// 			if (heart.innerHTML === noAction) {
-	// 				heart.innerHTML = liked;
-	// 				numbers[idx].innerText = `${
-	// 					parseInt(numbers[idx].innerText) + 1
-	// 				} others`;
-	// 			} else {
-	// 				heart.innerHTML = noAction;
-	// 				numbers[idx].innerText = `${
-	// 					parseInt(numbers[idx].innerText) - 1
-	// 				} others`;
-	// 			}
-	// 		});
-	// 	});
-	// };
-	// addLikeEvyListener();
-
-	// ----------------------Handle Search Event-----------------------
-	// getAll(".feeds-search").forEach((searchBar) => {
-	// 	const inputEl = searchBar.querySelector("input");
-	// 	const selectEl = searchBar.querySelector("select");
-	// 	inputEl.addEventListener("keyup", (evt) => {
-	// 		get(".create-post").style.display =
-	// 			evt.target.value === "" ? "flex" : "none";
-
-	// 		getAll(".feed").forEach((feed) => {
-	// 			const creator = feed
-	// 				.querySelector("h3")
-	// 				.innerText.toLowerCase();
-	// 			let tags = "";
-	// 			feed.querySelectorAll(".hash-tag").forEach((tag) => {
-	// 				tags += tag.innerText.toLowerCase();
-	// 			});
-	// 			const target = selectEl.value === "creator" ? creator : tags;
-
-	// 			if (target.includes(evt.target.value.toLowerCase())) {
-	// 				feed.style.display = "block";
-	// 			} else {
-	// 				feed.style.display = "none";
-	// 			}
-	// 		});
-	// 	});
-	// });
-
-	// ----------------------Handle Create Post-----------------------
-	// const initFeeds = {
-	// 	user: "Diana Ayi",
-	// 	avatarURL: "./images/profile-1.jpg",
-	// 	caption: "",
-	// 	photoURL: "",
-	// 	location: "New York, NY",
-	// 	likes: 0,
-	// 	post_time: "",
-	// 	tags: [],
-	// };
-
-	// let feedData = { ...initFeeds };
 
 	getAll("label[for='create-post']").forEach((label) => {
 		label.addEventListener("click", () => {
@@ -233,20 +141,7 @@ const addEventListeners = () => {
 		});
 	});
 
-	// get("#add-image").addEventListener("input", (evt) => {
-	// 	const { element, imgURL, removeIcon } = createImageContainer(
-	// 		evt.target.files[0]
-	// 	);
-	// 	const wrapper = document.createElement("div");
-	// 	wrapper.className = "img-wrapper";
-	// 	wrapper.appendChild(element);
-	// 	get(".img-thumbnail").innerHTML = wrapper.outerHTML;
-	// 	feedData = { ...feedData, photoURL: imgURL };
 
-	// 	removeIcon.addEventListener("click", () => {
-	// 		get(".img-thumbnail").removeChild(wrapper);
-	// 	});
-	// });
 
 	get("#submit-post").addEventListener("submit", (evt) => {
 		evt.preventDefault();

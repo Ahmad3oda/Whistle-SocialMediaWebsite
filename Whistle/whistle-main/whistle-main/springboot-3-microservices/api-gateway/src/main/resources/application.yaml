@@ -78,3 +78,8 @@ spring:
           uri: lb://bookmark-service
           predicates:
             - Path=/bookmark/**
+
+        - id: security-service
+          uri: lb://security-service
+          predicates:
+            - Path=/security/**

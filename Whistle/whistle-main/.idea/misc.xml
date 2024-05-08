@@ -19,6 +19,7 @@
         <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/notification-service/pom.xml" />
         <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/user-management-service/pom.xml" />
         <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/bookmark-service/pom.xml" />
+        <option value="$PROJECT_DIR$/whistle-main/springboot-3-microservices/security-service/pom.xml" />
       </list>
     </option>
   </component>

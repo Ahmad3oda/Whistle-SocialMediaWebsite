@@ -20,6 +20,7 @@
         <module name="search-service" />
         <module name="user-management-service" />
         <module name="media-service" />
+        <module name="security-service" />
         <module name="api-gateway" />
         <module name="service-registry" />
       </profile>
@@ -40,6 +41,7 @@
       <module name="notification-service" options="-parameters" />
       <module name="post-service" options="-parameters" />
       <module name="search-service" options="-parameters" />
+      <module name="security-service" options="-parameters" />
       <module name="service-registry" options="-parameters" />
       <module name="user-management-service" options="-parameters" />
     </option>

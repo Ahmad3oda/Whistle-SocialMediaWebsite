@@ -6,15 +6,8 @@ const getAll = (target) => {
 };
 
 
-
-const insertTemplate = ({ data = undefined, templateFunc, className }) => {
-	const template = data
-		.reverse()
-		.map((d) => templateFunc(d))
-		.join("");
-	const elementHTML = document.querySelector(className);
-	elementHTML.innerHTML = template;
-};
+let email = document.getElementById("email");
+email.innerHTML=parseJwt().email.split("@")[0];
 
 const createImageContainer = (img) => {
 	const url = URL.createObjectURL(img);

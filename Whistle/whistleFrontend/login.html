@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="logo">
+            <img src="images/logo.png" alt="logo">
+        </div>
+        <div class="text-center mt-4 name">
+            Whistle
+        </div>
+        <form class="p-3 mt-3">
+            <div class="form-field d-flex align-items-center">
+                <span class="far fa-user"></span>
+                <input type="email" name="username" id="username" placeholder="email">
+            </div>
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-key"></span>
+                <input type="password" name="password" id="password" placeholder="Password">
+            </div>
+            <button class="btn mt-3 submitLogin">Login</button>
+            
+        </form>
+        
+        <div class="text-center fs-6 ask">
+            <span href="#">Doesn't have an account?</span>  <a href="register.html">Sign up</a>
+            <p class="warning"></p>
+        </div>
+    </div>
+    <script src="scripts/parser.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="scripts/LoginHandling.js"></script>
+
+</body>
+</html>

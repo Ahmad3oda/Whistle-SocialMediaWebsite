@@ -10,8 +10,10 @@ const changeActiveObj = (items) => {
 		items[2].classList.add("active");
 	else if(window.location.href=="http://127.0.0.1:5500/index.html")
 		items[0].classList.add("active");
-	else if(window.location.href=="http://127.0.0.1:5500/settings.html")
+	else if(window.location.href=="http://127.0.0.1:5500/search.html")
 		items[4].classList.add("active");
+	else if(window.location.href=="http://127.0.0.1:5500/settings.html")
+		items[5].classList.add("active");
 };
 
 const changeWindow = (items) => {
@@ -22,6 +24,9 @@ const changeWindow = (items) => {
 		window.location.href="bookmarks.html";
 	}
 	items[4].onclick=function(){
+		window.location.href="search.html";
+	}
+	items[5].onclick=function(){
 		window.location.href="settings.html";
 	}
 }

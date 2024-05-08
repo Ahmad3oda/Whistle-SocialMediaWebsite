@@ -1,31 +1,48 @@
 
 
-
-// fetch("http://localhost:8060/post/self/4")
-// 	.then(response => response.json())
-// 	.then((data)=> data.reverse()
-// 	.forEach(element => {
-//         console.log(element)
-// 		const template = getFeedTemplate(element);
-// 		const elementHTML = document.querySelector(".feeds");
-// 		elementHTML.innerHTML += template;
-// 	}));
-
-fetch("http://localhost:8060/post/self/4")
+// function handleProfilePage(url){
+	if(sessionStorage.getItem('searchedUser')==null){
+	fetch(`http://localhost:8060/post/self/${parseJwt().id}`)
 	.then(response => response.json())
-	.then((data)=> data.reverse()
-	.forEach(element => {
-        console.log(element)
+	.then((data)=> {data.forEach(element => {
 		const template = getFeedTemplate(element);
 		const elementHTML = document.querySelector(".feeds");
 		elementHTML.innerHTML += template;
-	}));
+		likeHandling(element);
+	});
+	likeButtonInput();
+	bookmarkHandling();
+	}
+);
+}
 
-	// fetch("http://localhost:8085/like/getAll/20")
-	// .then(response => response.json())
-	// .then((data) => console.log(data));
-
-// fetch("http://localhost:8060/post/self/1")
-// 	.then(response => response.json())
-// 	.then((data) => console.log(data));
-
+else{
+	let addFriendBtn = document.createElement("button")
+	addFriendBtn.innerHTML='ADD Friend';
+	addFriendBtn.id=sessionStorage.getItem('searchedUser')
+	addFriendBtn.style.cssText="padding:6px; border-radius:5px;background-color:#7358de;color:white"
+	let logoutBtn = document.querySelector('.logout')
+	let container = document.querySelector('.container');
+	
+	addFriendBtn.onclick = function (){
+		fetch(`http://localhost:8060/friends/request/${parseJwt().id}/${addFriendBtn.id}`, {
+			method: "POST",
+			redirect: "follow"
+		}).then(response => 	addFriendBtn.innerHTML='Sent')
+		.catch(error =>console.log(error));
+	}
+	container.insertBefore(addFriendBtn,logoutBtn);
+	fetch(`http://localhost:8060/post/self/${sessionStorage.getItem('searchedUser')}`)
+	.then(response => response.json())
+	.then((data)=> {data.forEach(element => {
+		const template = getFeedTemplate(element);
+		const elementHTML = document.querySelector(".feeds");
+		elementHTML.innerHTML += template;
+		likeHandling(element);
+	});
+	likeButtonInput();
+	bookmarkHandling();
+	sessionStorage.removeItem('searchedUser');
+	}
+);
+}

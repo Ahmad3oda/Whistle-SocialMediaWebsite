@@ -31,6 +31,7 @@ public class CommentController {
     // get the number of comments for displaying them in the post
     @GetMapping("/count/{postId}")
     public Long getNumberOfComments(@PathVariable Long postId) {
+
         return commentService.countCommentsByPostId(postId);
     }
 

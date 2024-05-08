@@ -1,10 +1,6 @@
-{/* <div class="profile-photo">
-			<img src="${avatarURL}">
-		</div>
 
-		 */}
 const getNotificationTemplate = (notification) => {
-	// const { user, avatarURL, action, time } = notification;
+	
 	const avatarURL="";
 	return `
 	<div>
@@ -18,11 +14,6 @@ const getNotificationTemplate = (notification) => {
 	`;
 };
 
-// const getMiddleTemplte = () => {
-// 	return `
-		
-// 	`;
-// };
 
 
 const getFeedTemplate = (feed) => {
@@ -32,17 +23,17 @@ const getFeedTemplate = (feed) => {
 			<div class="head">
 				<div class="user">
 					<div class="profile-photo">
-						<img src="${feed.avatarURL}">
+						<img src="images/image.jpeg">
 					</div>
 					<div class="ingo">
 						<h3>${feed.username}</h3>
-						<small> ${feed.postDate}</small>
+						<small> ${feed.postDate.split("T")[0]}</small>
 					</div>
 				</div>
 				<span class="more">
 					<i class="uil uil-ellipsis-h"></i>
 				</span>
-			</div>
+			</div>	
 			<div class="caption">
 				<p>
 					${feed.content} 
@@ -65,20 +56,6 @@ const getFeedTemplate = (feed) => {
 	`;
 };
 
-// const getMessageTemplate = (msg) => {
-// 	const { user, avatarURL, message } = msg;
-// 	return `
-// 	<div class="message">
-// 		<div class="profile-photo">
-// 			<img src="${avatarURL}">
-// 		</div>
-// 		<div class="message-body">
-// 			<h5>${user}</h5>
-// 			<p class="text-muted">${message}</p>
-// 		</div>
-// 	</div>
-// 	`;
-// };
 
 const getRequestTemplate = (request) => {
 	// const { user, avatarURL, mutual_friends } = request;
@@ -87,20 +64,62 @@ const getRequestTemplate = (request) => {
 	<div class="request">
 		<div class="info">
 			<div class="profile-photo">
-				<img src="${avatarURL}">
+			<img src="images/image.jpeg">
 			</div>
 			<div>
-				<h5>${request}</h5>
+				<h5>${request.name}</h5>
 			</div>
 		</div>
 		<div class="action">
-			<button class="btn btn-primary acceptRequest" id=${request}>
+			<button class="btn btn-primary acceptRequest" acceptBtn=${request.id}>
 				Accept
 			</button>
-			<button class="btn declineRequest" id=${request}>
+			<button class="btn declineRequest" declineBtn=${request.id}>
 				Decline
 			</button>
 		</div>
 	</div>
 	`;
 };
+
+
+const getSuggestionsTemplate = (suggestion) => {
+	console.log(suggestion)
+	// const { user, avatarURL, mutual_friends } = request;
+	const avatarURL="adg/afd";
+	return `
+	<div class="request">
+		<div class="info">
+			<div class="profile-photo">
+				<img src="images/image.jpeg">
+			</div>
+			<div>
+				<h5>${suggestion.name}</h5>
+			</div>
+		</div>
+		<div class="action">
+			<button class="btn btn-primary acceptSuggestion" acceptBtn=${suggestion.id}>
+				Add Friend
+			</button>
+			
+		</div>
+	</div>
+	`;
+};
+
+
+const getSearchTemplate = (search) =>{
+	return `
+	<div class="request searchRes" style="width:80%" userId=${search.id}>
+			<div style="width:100% ;text-align:center" >
+				<div  style=" margin: auto; width: 80px; border-radius: 50%; overflow: hidden; margin-bottom: 10px;">
+					<img src="images/image.jpeg" width="100%">
+				</div>
+				<div>
+					<h5>${search.firstName + " " + search.lastName}</h5>
+				</div>
+			</div>
+		</div>
+
+	`
+}
