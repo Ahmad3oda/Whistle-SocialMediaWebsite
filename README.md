@@ -1,7 +1,7 @@
 # Whistle-SocialMediaWebsite
 
 ## Overview
-Whistle-SocialMediaWebsite is a scalable social media platform developed using Java Spring Boot and Microservices architecture. The platform allows users to connect, share posts, and interact with friends in a secure environment.
+Whistle is a scalable social media platform developed using Java Spring Boot and Microservices architecture. The platform allows users to connect, share posts, and interact with friends in a secure environment.
 
 ## Features
 - **User Authentication**: Secure user authentication and authorization mechanisms.
