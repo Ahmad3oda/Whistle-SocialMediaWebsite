@@ -29,7 +29,7 @@ Whistle is a scalable social media platform developed using Java Spring Boot and
 8. **Notification Service**: Handles notifications for user interactions and updates.
 
 ## Getting Started
-1. Clone the repository: `git clone <repository_url>`
+1. Clone the repository: `git clone https://github.com/Ahmad3oda/Whistle-SocialMediaWebsite.git`
 2. Navigate to the project directory: `cd Whistle-SocialMediaWebsite`
 3. Install dependencies: `mvn install`
 4. Run the application: `mvn spring-boot:run`
